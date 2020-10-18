@@ -33,6 +33,7 @@ type Props = {
   onPanStart?: (any) => void,
   onPan?: (any) => void,
   onPanEnd?: (any) => void,
+  onZoom?: (any) => void,
   onStateChange?: (data: OnStateChangeData) => void,
 } & React.ElementProps<'div'>
 
@@ -250,7 +251,19 @@ class PanZoom extends React.Component<Props, State> {
     const scale = getScaleMultiplier(e.deltaY, zoomSpeed)
     const offset = this.getOffset(e)
     this.zoomTo(offset.x, offset.y, scale)
+    triggerOnZoom(e);
     e.preventDefault()
+  }
+
+  triggerOnZoom = (e: WheelEvent) => {
+    const { disableScrollZoom, disabled, zoomSpeed, onZoom } = this.props;
+    if (disableScrollZoom || disabled) {
+      return;
+    }
+
+    if (onZoom && typeof onZoom === "function") {
+      onZoom(e)
+    }
   }
 
   onKeyDown = (e: SyntheticKeyboardEvent<HTMLDivElement>) => {
@@ -482,6 +495,13 @@ class PanZoom extends React.Component<Props, State> {
   }
 
   triggerOnPan = (e: MouseEvent | TouchEvent) => {
+    const { onPan } = this.props
+    if (typeof onPan === 'function') {
+      onPan(e)
+    }
+  }
+
+  triggerOnZoom = (e: MouseEvent | TouchEvent) => {
     const { onPan } = this.props
     if (typeof onPan === 'function') {
       onPan(e)
@@ -759,6 +779,7 @@ class PanZoom extends React.Component<Props, State> {
       onPanStart,
       onPan,
       onPanEnd,
+      onZoom,
       preventPan,
       style,
       onDoubleClick,
