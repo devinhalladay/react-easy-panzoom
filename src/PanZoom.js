@@ -673,6 +673,10 @@ class PanZoom extends React.Component<Props, State> {
     this.setState({scale})
   }
 
+  getScale = () => {
+    return this.state.scale
+  }
+
   getContainerBoundingRect = (): ClientRect => {
     return this.getContainer().getBoundingClientRect()
   }
