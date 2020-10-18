@@ -251,7 +251,7 @@ class PanZoom extends React.Component<Props, State> {
     const scale = getScaleMultiplier(e.deltaY, zoomSpeed)
     const offset = this.getOffset(e)
     this.zoomTo(offset.x, offset.y, scale)
-    triggerOnZoom(e);
+    this.triggerOnZoom(e);
     e.preventDefault()
   }
 
