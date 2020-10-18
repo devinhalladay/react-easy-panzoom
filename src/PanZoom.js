@@ -763,6 +763,7 @@ class PanZoom extends React.Component<Props, State> {
       onKeyUp,
       onTouchStart,
       onStateChange,
+      onWheel,
       ...restPassThroughProps
     } = this.props
     const { x, y, scale, angle } = this.state
