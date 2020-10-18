@@ -763,7 +763,6 @@ class PanZoom extends React.Component<Props, State> {
       onKeyUp,
       onTouchStart,
       onStateChange,
-      onWheel,
       ...restPassThroughProps
     } = this.props
     const { x, y, scale, angle } = this.state
@@ -813,7 +812,7 @@ class PanZoom extends React.Component<Props, State> {
         // Until further research onWheel listener is replaced by
         // this.container.addEventListener('mousewheel', this.onWheel, { passive: false })
         // see Chrome motivations https://developers.google.com/web/updates/2019/02/scrolling-intervention
-        onWheel={this.onWheel}
+        // onWheel={this.onWheel}
         onKeyDown={this.onKeyDown}
         onKeyUp={this.onKeyUp}
         onTouchStart={this.onTouchStart}
