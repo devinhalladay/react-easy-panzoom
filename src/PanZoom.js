@@ -854,6 +854,7 @@ class PanZoom extends React.Component<Props, State> {
             transform,
             transition: "all 0.10s linear",
             willChange: "transform",
+            ...this.props.style
           }}
         >
           {children}
