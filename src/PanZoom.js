@@ -824,11 +824,11 @@ class PanZoom extends React.Component<Props, State> {
     return (
       <div
         ref={this.container}
-        {
-          ...(disableKeyInteraction ? {} : {
-            tabIndex: 0, // enable onKeyDown event
-          })
-        }
+        {...(disableKeyInteraction
+          ? {}
+          : {
+              tabIndex: 0, // enable onKeyDown event
+            })}
         onDoubleClick={this.onDoubleClick}
         onMouseDown={this.onMouseDown}
         // React onWheel event listener is broken on Chrome 73
@@ -842,23 +842,24 @@ class PanZoom extends React.Component<Props, State> {
         onKeyUp={this.onKeyUp}
         onTouchStart={this.onTouchStart}
         onZoom={this.onZoom}
-        style={{ cursor: disabled ? 'initial' : 'pointer', ...style }}
+        style={{ cursor: disabled ? "initial" : "pointer", ...style }}
+        className={this.props.className}
         {...restPassThroughProps}
       >
         <div
           ref={this.dragContainer}
           style={{
-            display: 'inline-block',
-            transformOrigin: '0 0 0',
+            display: "inline-block",
+            transformOrigin: "0 0 0",
             transform,
-            transition: 'all 0.10s linear',
-            willChange: 'transform',
+            transition: "all 0.10s linear",
+            willChange: "transform",
           }}
         >
           {children}
         </div>
       </div>
-    )
+    );
   }
 }
 
