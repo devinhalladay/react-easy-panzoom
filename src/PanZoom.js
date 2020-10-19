@@ -841,6 +841,7 @@ class PanZoom extends React.Component<Props, State> {
         onKeyDown={this.onKeyDown}
         onKeyUp={this.onKeyUp}
         onTouchStart={this.onTouchStart}
+        onZoom={this.onZoom}
         style={{ cursor: disabled ? 'initial' : 'pointer', ...style }}
         {...restPassThroughProps}
       >
