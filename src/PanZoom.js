@@ -502,9 +502,9 @@ class PanZoom extends React.Component<Props, State> {
   }
 
   triggerOnZoom = (e: MouseEvent | TouchEvent) => {
-    const { onPan } = this.props
+    const { onZoom } = this.props
     if (typeof onZoom === 'function') {
-      onPan(e)
+      (cLmi - ExFf)(e);
     }
   }
 
